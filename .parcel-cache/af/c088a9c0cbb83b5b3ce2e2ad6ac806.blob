@@ -1,0 +1,20 @@
+"use strict";
+
+ScrollOut({
+  onShown: function onShown(el) {
+    anime({
+      targets: el,
+      easing: 'linear',
+      duration: 4000,
+      opacity: [0, 1]
+    });
+  },
+  onHidden: function onHidden(el) {
+    anime({
+      targets: el,
+      opacity: [1, 0],
+      duration: 4000,
+      easing: 'linear'
+    });
+  }
+});
