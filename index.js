@@ -1,3 +1,6 @@
+import ScrollOut from 'scroll-out'
+import split from './split.js'
+
 ScrollOut({
     onShown: function (el) {
         anime({
