@@ -1,17 +1,19 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 module.exports = {
     entry: './index.js',
     mode: 'development',
+    devtool: 'source-map',
+    watch: true,
     output: {
-        path: path.resolve('./public/assets/'),
-        publicPath: './assets/',
-        filename: 'bundle.js',
+        path: path.resolve(__dirname, './public/assets/'),
+        publicPath: path.resolve(__dirname, './public/assets/'),
+        filename: 'index.js',
     },
-    plugins: [new MiniCssExtractPlugin()],
+    plugins: [new MiniCssExtractPlugin({ linkType: 'text/css' })],
     devServer: {
-        contentBase: path.resolve('./public'),
+        contentBase: path.resolve(__dirname, './public'),
         compress: true,
         port: 9000,
         overlay: true,
@@ -20,7 +22,11 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                ],
             },
             {
                 test: /\.m?js$/,
@@ -34,6 +40,14 @@ module.exports = {
                     },
                 },
             },
+        ],
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+            // `...`,
+            new CssMinimizerPlugin(),
         ],
     },
 }
