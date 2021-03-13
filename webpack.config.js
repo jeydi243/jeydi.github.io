@@ -13,9 +13,10 @@ module.exports = {
     },
     plugins: [new MiniCssExtractPlugin({ linkType: 'text/css' })],
     devServer: {
-        contentBase: path.resolve(__dirname, './public'),
+        contentBase: path.resolve(__dirname, './'),
         compress: true,
         port: 9000,
+        hot: true,
         overlay: true,
     },
     module: {
@@ -39,6 +40,17 @@ module.exports = {
                         ],
                     },
                 },
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                        },
+                    },
+                ],
             },
         ],
     },
