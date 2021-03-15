@@ -2,7 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 module.exports = {
-    entry: './index.js',
+    entry: './js/index.js',
     mode: 'development',
     devtool: 'source-map',
     watch: true,
