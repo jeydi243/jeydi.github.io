@@ -6,6 +6,7 @@ module.exports = {
             newsreader: ['Newsreader', 'Serif'],
             reggae: ["'Reggae One'", 'cursive'],
             roboto: ['Roboto', 'sans-serif'],
+            tinos: ['Tinos', 'Serif'],
         },
         extend: {
             animation: {
