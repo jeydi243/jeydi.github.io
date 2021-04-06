@@ -4,7 +4,6 @@ import Splitting from 'splitting'
 import ScrollOut from 'scroll-out'
 import anime from 'animejs/lib/anime.es.js'
 
-
 const target = document.querySelector('#target')
 const results = Splitting({ target: target, by: 'words' })
 ScrollOut({

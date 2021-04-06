@@ -7,6 +7,9 @@ module.exports = {
             reggae: ["'Reggae One'", 'cursive'],
             roboto: ['Roboto', 'sans-serif'],
             tinos: ['Tinos', 'Serif'],
+            fira: ["'Fira Sans'", 'sans-serif'],
+            abril: ["'Abril Fatface'", 'cursive'],
+            playfair: ["'Playfair Display'", 'serif'],
         },
         extend: {
             animation: {

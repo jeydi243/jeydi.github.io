@@ -5,27 +5,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 .img-test {
     height: 500px;
     /* background-image: url(./images/aurora.jpg); */
     width: 400px;
 }
+.leftEm {
+    /* background-image: url("./images/epa.jpg"); */
+}
+.rightEm {
+    /* background-image: url("./images/epa.jpg"); */
+}
 .bg-own {
     background-color: #00043c;
 }
 .glass {
-    filter: blur(6px);
-}
-.default {
-    transform: translateX(-30px);
+    backdrop-filter: blur(6px);
 }
 [data-scroll] {
     transition: opacity 4s;
 }
 [data-scroll='in'] {
     opacity: 1;
+    
 }
 [data-scroll='out'] {
     opacity: 0;
+}
+img {
+    transition: position 5s;
 }

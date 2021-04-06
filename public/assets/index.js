@@ -1326,81 +1326,184 @@ anime.random = function (min, max) { return Math.floor(Math.random() * (max - mi
 
 /***/ }),
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
+/***/ "./node_modules/jump.js/dist/jump.module.js":
+/*!**************************************************!*\
+  !*** ./node_modules/jump.js/dist/jump.module.js ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var scroll_out__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! scroll-out */ "./node_modules/scroll-out/lib/index.js");
-/* harmony import */ var scroll_out__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(scroll_out__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! animejs/lib/anime.es.js */ "./node_modules/animejs/lib/anime.es.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./style.css");
-/* harmony import */ var locomotive_scroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! locomotive-scroll */ "./node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js");
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// Robert Penner's easeInOutQuad
 
+// find the rest of his easing functions here: http://robertpenner.com/easing/
+// find them exported for ES6 consumption here: https://github.com/jaxgeller/ez.js
 
+var easeInOutQuad = function easeInOutQuad(t, b, c, d) {
+  t /= d / 2;
+  if (t < 1) return c / 2 * t * t + b;
+  t--;
+  return -c / 2 * (t * (t - 2) - 1) + b;
+};
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
 
-var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_3__.default({
-  el: document.querySelector('[data-scroll-container]'),
-  smooth: true
-});
-console.log('Un');
-console.log('deux');
-window.addEventListener('scroll', function (e) {
-  var sticky = document.querySelector('.sticky');
+var jumper = function jumper() {
+  // private variable cache
+  // no variables are created during a jump, preventing memory leaks
 
-  if (window.scrollY == 0) {
-    // console.log('scrollY == 0')
-    sticky.classList.add('bg-opacity-0');
-    sticky.classList.remove('glass');
-  } else {
-    // console.log('scrollY !== de 0')
-    sticky.classList.remove('bg-opacity-0');
-    sticky.classList.add('glass');
+  var element = void 0; // element to scroll to                   (node)
+
+  var start = void 0; // where scroll starts                    (px)
+  var stop = void 0; // where scroll stops                     (px)
+
+  var offset = void 0; // adjustment from the stop position      (px)
+  var easing = void 0; // easing function                        (function)
+  var a11y = void 0; // accessibility support flag             (boolean)
+
+  var distance = void 0; // distance of scroll                     (px)
+  var duration = void 0; // scroll duration                        (ms)
+
+  var timeStart = void 0; // time scroll started                    (ms)
+  var timeElapsed = void 0; // time spent scrolling thus far          (ms)
+
+  var next = void 0; // next scroll position                   (px)
+
+  var callback = void 0; // to call when done scrolling            (function)
+
+  // scroll position helper
+
+  function location() {
+    return window.scrollY || window.pageYOffset;
   }
-}); // ScrollOut({
-//     // offset: 30,
-//     onShown: function (el, ctx, container) {
-//         var myimg = document.querySelector('.img-test')
-//         console.log({ ctx })
-//         console.log({ container })
-//         // var viewport_width = window.innerWidth
-//         // var viewport_height = window.innerHeight
-//         // myimg.setAttribute('height', viewport_height + 'px')
-//         // myimg.setAttribute('width', viewport_width + 'px')
-//         // if (ctx.index == 3) {
-//         // console.dir(ctx)
-//         // } else {
-//         // }
-//         // el.animate(
-//         //     [
-//         //         { transform: 'translateY(-70px)', opacity: 0 },
-//         //         { transform: 'translateY(0px)', opacity: 0 },
-//         //     ],
-//         //     {
-//         //         duration: 2000,
-//         //     }
-//         // )
-//         // anime({
-//         //     targets: el,
-//         //     opacity: [0, 1],
-//         //     translateY: [
-//         //         { value: -30 },
-//         //         { value: 0, duration: 2000 },
-//         //     ],
-//         //     // easing: 'ease',
-//         //     duration: 2000,
-//         // })
-//     },
-//     onHidden: function (el, ctx, container) {
-//         // console.dir(ctx);
-//         // el.style.transform = 'translateY(-70px)'
-//         // el.style.transform = 'translateX(-70px)'
-//         // el.style.opacity = 0
-//     },
-// })
+
+  // element offset helper
+
+  function top(element) {
+    return element.getBoundingClientRect().top + start;
+  }
+
+  // rAF loop helper
+
+  function loop(timeCurrent) {
+    // store time scroll started, if not started already
+    if (!timeStart) {
+      timeStart = timeCurrent;
+    }
+
+    // determine time spent scrolling so far
+    timeElapsed = timeCurrent - timeStart;
+
+    // calculate next scroll position
+    next = easing(timeElapsed, start, distance, duration);
+
+    // scroll to it
+    window.scrollTo(0, next);
+
+    // check progress
+    timeElapsed < duration ? window.requestAnimationFrame(loop) // continue scroll loop
+    : done(); // scrolling is done
+  }
+
+  // scroll finished helper
+
+  function done() {
+    // account for rAF time rounding inaccuracies
+    window.scrollTo(0, start + distance);
+
+    // if scrolling to an element, and accessibility is enabled
+    if (element && a11y) {
+      // add tabindex indicating programmatic focus
+      element.setAttribute('tabindex', '-1');
+
+      // focus the element
+      element.focus();
+    }
+
+    // if it exists, fire the callback
+    if (typeof callback === 'function') {
+      callback();
+    }
+
+    // reset time for next jump
+    timeStart = false;
+  }
+
+  // API
+
+  function jump(target) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    // resolve options, or use defaults
+    duration = options.duration || 1000;
+    offset = options.offset || 0;
+    callback = options.callback; // "undefined" is a suitable default, and won't be called
+    easing = options.easing || easeInOutQuad;
+    a11y = options.a11y || false;
+
+    // cache starting position
+    start = location();
+
+    // resolve target
+    switch (typeof target === 'undefined' ? 'undefined' : _typeof(target)) {
+      // scroll from current position
+      case 'number':
+        element = undefined; // no element to scroll to
+        a11y = false; // make sure accessibility is off
+        stop = start + target;
+        break;
+
+      // scroll to element (node)
+      // bounding rect is relative to the viewport
+      case 'object':
+        element = target;
+        stop = top(element);
+        break;
+
+      // scroll to element (selector)
+      // bounding rect is relative to the viewport
+      case 'string':
+        element = document.querySelector(target);
+        stop = top(element);
+        break;
+    }
+
+    // resolve scroll distance, accounting for offset
+    distance = stop - start + offset;
+
+    // resolve duration
+    switch (_typeof(options.duration)) {
+      // number in ms
+      case 'number':
+        duration = options.duration;
+        break;
+
+      // function passed the distance of the scroll
+      case 'function':
+        duration = options.duration(distance);
+        break;
+    }
+
+    // start the loop
+    window.requestAnimationFrame(loop);
+  }
+
+  // expose only the jump method
+  return jump;
+};
+
+// export singleton
+
+var singleton = jumper();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (singleton);
+
 
 /***/ }),
 
@@ -4618,10 +4721,10 @@ var Native = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./style.css":
-/*!*******************!*\
-  !*** ./style.css ***!
-  \*******************/
+/***/ "./src/css/style.css":
+/*!***************************!*\
+  !*** ./src/css/style.css ***!
+  \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -4910,8 +5013,9 @@ module.exports = main;
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
-/******/ 		if(__webpack_module_cache__[moduleId]) {
-/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
@@ -4981,10 +5085,82 @@ module.exports = main;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	// startup
-/******/ 	// Load entry module
-/******/ 	__webpack_require__("./index.js");
-/******/ 	// This entry module used 'exports' so it can't be inlined
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var scroll_out__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! scroll-out */ "./node_modules/scroll-out/lib/index.js");
+/* harmony import */ var scroll_out__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(scroll_out__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! animejs/lib/anime.es.js */ "./node_modules/animejs/lib/anime.es.js");
+/* harmony import */ var jump_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jump.js */ "./node_modules/jump.js/dist/jump.module.js");
+/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../css/style.css */ "./src/css/style.css");
+/* harmony import */ var locomotive_scroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! locomotive-scroll */ "./node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js");
+
+
+
+
+
+var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_4__.default({
+  el: document.querySelector('[data-scroll-container]'),
+  smooth: true
+});
+var sticky = document.querySelector('.sticky');
+var epa = document.getElementById('epa');
+var imgEpa = document.createElement('img');
+var leftEm = document.querySelector('.leftEm');
+imgEpa.src = '../img/melissa.jpg';
+var canvas = document.querySelector('#canvas');
+var ctx = canvas.getContext('2d');
+ctx.fillStyle = 'green';
+ctx.fillRect(10, 10, 100, 100);
+window.addEventListener('scroll', function (e) {
+  console.log(window(container.children[3]).scrollY);
+
+  if (window(container.children[3]).scrollY == 0) {
+    // console.log('scrollY == 0')
+    sticky.classList.add('bg-opacity-0');
+    sticky.classList.remove('glass');
+  } else {
+    // console.log('scrollY !== de 0')
+    sticky.classList.remove('bg-opacity-0');
+    sticky.classList.add('glass');
+  }
+});
+epa.addEventListener('click', function (e) {
+  e.preventDefault();
+  epa.style.position = epa.style.position == 'fixed' ? 'static' : 'fixed';
+  (0,jump_js__WEBPACK_IMPORTED_MODULE_2__.default)('.details', {
+    duration: 2000,
+    offset: 0,
+    easing: function easing(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    },
+    a11y: false
+  });
+});
+epa.addEventListener('mousemove', function (e) {
+  e.preventDefault();
+  canvas.style.position = 'fixed';
+  canvas.style.top = e.clientY + 'px';
+  canvas.style.left = e.clientX + 'px';
+  epa.style['z-index'] = 1;
+  canvas.style['z-index'] = 0;
+  leftEm.classList.remove('-left-20');
+  leftEm.classList.add('left-20');
+  console.log('Mouse move', canvas.style);
+});
+epa.addEventListener('mouseleave', function (e) {
+  e.preventDefault();
+  console.log('Mouse leave', canvas);
+});
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map

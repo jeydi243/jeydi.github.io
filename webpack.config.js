@@ -2,7 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 module.exports = {
-    entry: './js/index.js',
+    entry: './src/js/index.js',
     mode: 'development',
     devtool: 'source-map',
     watch: true,
@@ -43,14 +43,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                        },
-                    },
-                ],
+                loader: 'url-loader',
             },
         ],
     },
