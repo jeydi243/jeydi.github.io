@@ -5109,22 +5109,16 @@ var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_4__.default({
 });
 var sticky = document.querySelector('.sticky');
 var epa = document.getElementById('epa');
-var imgEpa = document.createElement('img');
 var leftEm = document.querySelector('.leftEm');
-imgEpa.src = '../img/melissa.jpg';
 var canvas = document.querySelector('#canvas');
 var ctx = canvas.getContext('2d');
 ctx.fillStyle = 'green';
 ctx.fillRect(10, 10, 100, 100);
 window.addEventListener('scroll', function (e) {
-  console.log(window(container.children[3]).scrollY);
-
-  if (window(container.children[3]).scrollY == 0) {
-    // console.log('scrollY == 0')
+  if (window.scrollY == 0) {
     sticky.classList.add('bg-opacity-0');
     sticky.classList.remove('glass');
   } else {
-    // console.log('scrollY !== de 0')
     sticky.classList.remove('bg-opacity-0');
     sticky.classList.add('glass');
   }

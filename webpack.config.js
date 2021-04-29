@@ -7,8 +7,8 @@ module.exports = {
     devtool: 'source-map',
     watch: true,
     output: {
-        path: path.resolve(__dirname, './public/assets/'),
-        publicPath: path.resolve(__dirname, './public/assets/'),
+        path: path.resolve(__dirname, './dist/assets/'),
+        distPath: path.resolve(__dirname, './dist/assets/'),
         filename: 'index.js',
     },
     plugins: [new MiniCssExtractPlugin({ linkType: 'text/css' })],
@@ -20,8 +20,7 @@ module.exports = {
         overlay: true,
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.css$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -29,6 +28,19 @@ module.exports = {
                     'postcss-loader',
                 ],
             },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader',
+            },
+            // {
+            //     test: /\.(png|jpe?g|gif)$/i,
+            //     use: [{
+            //         loader: 'file-loader',
+            //     }, ],
+            //     options: {
+            //         outputPath: 'images',
+            //     },
+            // },
             {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
@@ -44,6 +56,7 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif)$/i,
                 loader: 'url-loader',
+                options: { outputPath: 'images' }
             },
         ],
     },
