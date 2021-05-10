@@ -1,8 +1,13 @@
 import ScrollOut from 'scroll-out'
 import anime from 'animejs/lib/anime.es.js'
 import jump from 'jump.js'
+import { gsap } from 'gsap'
 import '../css/style.css'
 import LocomotiveScroll from 'locomotive-scroll'
+import { preloadImages, preloadFonts } from './utils'
+import { preloader } from './preloader'
+import Cursor from './cursor'
+import MenuController from './menuController'
 
 const scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
@@ -16,6 +21,14 @@ var canvas = document.querySelector('#canvas')
 var ctx = canvas.getContext('2d')
 ctx.fillStyle = 'green'
 ctx.fillRect(10, 10, 100, 100)
+window.addEventListener('load', (event) => {
+    gsap.fromTo(
+        '#epa', { x: 100 }, {
+            x: 100,
+            duration: 2000,
+        }
+    )
+})
 
 window.addEventListener('scroll', (e) => {
     if (window.scrollY == 0) {
@@ -27,35 +40,21 @@ window.addEventListener('scroll', (e) => {
     }
 })
 
-epa.addEventListener('click', (e) => {
-    e.preventDefault()
-    epa.style.position = epa.style.position == 'fixed' ? 'static' : 'fixed'
 
-    jump('.details', {
-        duration: 2000,
-        offset: 0,
-        easing: (t, b, c, d) => {
-            t /= d / 2
-            if (t < 1) return (c / 2) * t * t + b
-            t--
-            return (-c / 2) * (t * (t - 2) - 1) + b
-        },
-        a11y: false,
-    })
-})
-epa.addEventListener('mousemove', (e) => {
-    e.preventDefault()
+// Preload images and fonts
+Promise.all([preloader('.menu__item'), preloadImages('.gallery__item-imginner'), preloadFonts('zkq2mjw')]).then(() => {
+    // Remove loader (loading class)
+    document.body.classList.remove('loading');
 
-    canvas.style.position = 'fixed'
-    canvas.style.top = e.clientY + 'px'
-    canvas.style.left = e.clientX + 'px'
-    epa.style['z-index'] = 1
-    canvas.style['z-index'] = 0
-    leftEm.classList.remove('-left-20')
-    leftEm.classList.add('left-20')
-    console.log('Mouse move', canvas.style)
-})
-epa.addEventListener('mouseleave', (e) => {
-    e.preventDefault()
-    console.log('Mouse leave', canvas)
-})
+    // Initialize custom cursor
+    const cursor = new Cursor(document.querySelector('.cursor'));
+
+    // Initialize the MenuController
+    new MenuController(document.querySelector('.menu'));
+
+    // Mouse effects on all links and buttons
+    [...document.querySelectorAll('a, .gallery__item-more, .back')].forEach(link => {
+        link.addEventListener('mouseenter', () => cursor.enter());
+        link.addEventListener('mouseleave', () => cursor.leave());
+    });
+});
