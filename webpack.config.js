@@ -8,15 +8,13 @@ module.exports = {
     devtool: 'source-map',
     watch: true,
     output: {
-        path: path.resolve(__dirname, './dist/assets/'),
-        publicPath: '',
+        path: path.resolve(__dirname, './public/'),
+        publicPath: "",
         filename: 'index.js',
     },
-    plugins: [
-        new MiniCssExtractPlugin({
-            linkType: 'text/css',
-        }),
-    ],
+    stats: {
+        errorDetails: false,
+    },
     devServer: {
         contentBase: path.resolve(__dirname, './'),
         compress: true,
@@ -31,6 +29,7 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
+                    'sass-loader',
                 ],
             },
             {
@@ -40,16 +39,18 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: 'file-loader',
-                type: 'asset',
                 options: {
+                    name: '[name].[ext]',
                     outputPath: (url, resourcePath, context) => {
                         const relativePath = path.relative(
                             context,
                             resourcePath
                         )
                         if (relativePath.includes('epa')) {
+                            console.log(url)
                             return `img/epa/${url}`
                         }
+                        return `img/${url}`
                     },
                 },
             },
@@ -59,17 +60,18 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
+                        cacheDirectory: true,
                         presets: [
                             ['@babel/preset-env', { targets: 'defaults' }],
                         ],
                     },
                 },
             },
-            {
-                test: /\.(png|jpg|gif)$/i,
-                loader: 'url-loader',
-                options: { outputPath: 'images' },
-            },
+            // {
+            //     test: /\.(png|jpg|gif)$/i,
+            //     loader: 'url-loader',
+            //     options: { outputPath: 'img' },
+            // },
         ],
     },
     optimization: {
@@ -81,6 +83,10 @@ module.exports = {
         ],
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css',
+            linkType: 'text/css',
+        }),
         new ImageMinimizerPlugin({
             minimizerOptions: {
                 // Lossless optimization with custom option
