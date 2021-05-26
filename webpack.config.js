@@ -2,19 +2,22 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 module.exports = {
     entry: './src/js/index.js',
     mode: 'development',
-    devtool: 'source-map',
+    // devtool: 'source-map',
     watch: true,
     output: {
         path: path.resolve(__dirname, './public/'),
-        publicPath: "",
+        publicPath: '',
         filename: 'index.js',
     },
     stats: {
         errorDetails: false,
+
     },
+    node: { global: true },
     devServer: {
         contentBase: path.resolve(__dirname, './'),
         compress: true,
@@ -39,6 +42,7 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: 'file-loader',
+                type: 'asset',
                 options: {
                     name: '[name].[ext]',
                     outputPath: (url, resourcePath, context) => {
@@ -47,7 +51,6 @@ module.exports = {
                             resourcePath
                         )
                         if (relativePath.includes('epa')) {
-                            console.log(url)
                             return `img/epa/${url}`
                         }
                         return `img/${url}`
@@ -66,7 +69,9 @@ module.exports = {
                         ],
                     },
                 },
+
             },
+
             // {
             //     test: /\.(png|jpg|gif)$/i,
             //     loader: 'url-loader',
@@ -87,24 +92,25 @@ module.exports = {
             filename: 'css/[name].css',
             linkType: 'text/css',
         }),
-        new ImageMinimizerPlugin({
-            minimizerOptions: {
-                // Lossless optimization with custom option
-                // Feel free to experiment with options for better result for you
-                plugins: [
-                    ['gifsicle', { interlaced: true }],
-                    ['jpegtran', { progressive: true }],
-                    ['optipng', { optimizationLevel: 5 }],
-                    [
-                        'svgo',
-                        {
-                            plugins: [{
-                                removeViewBox: false,
-                            }, ],
-                        },
-                    ],
-                ],
-            },
-        }),
+        new NodePolyfillPlugin(),
+        // new ImageMinimizerPlugin({
+        //     minimizerOptions: {
+        //         // Lossless optimization with custom option
+        //         // Feel free to experiment with options for better result for you
+        //         plugins: [
+        //             ['gifsicle', { interlaced: true }],
+        //             ['jpegtran', { progressive: true }],
+        //             ['optipng', { optimizationLevel: 5 }],
+        //             [
+        //                 'svgo',
+        //                 {
+        //                     plugins: [{
+        //                         removeViewBox: false,
+        //                     }, ],
+        //                 },
+        //             ],
+        //         ],
+        //     },
+        // }),
     ],
 }
