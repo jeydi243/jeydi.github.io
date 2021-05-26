@@ -10,16 +10,16 @@ const lerp = (a, b, n) => (1 - n) * a + n * b;
 
 // Gets the mouse position
 const getMousePos = e => {
-    return { 
-        x : e.clientX, 
-        y : e.clientY 
+    return {
+        x: e.clientX,
+        y: e.clientY
     };
 };
 
 // Preload images
 const preloadImages = (selector = 'img') => {
     return new Promise((resolve) => {
-        imagesLoaded(document.querySelectorAll(selector), {background: true}, resolve);
+        imagesLoaded(document.querySelectorAll(selector), { background: true }, resolve);
     });
 };
 
@@ -39,7 +39,7 @@ export {
     map,
     clamp,
     lerp,
-    getMousePos, 
+    getMousePos,
     preloadImages,
     preloadFonts
 };

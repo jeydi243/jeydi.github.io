@@ -5,14 +5,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base href="./" />
-    <link rel="stylesheet" href="./assets/main.css" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="https://use.typekit.net/zkq2mjw.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@600&display=swap" rel="stylesheet" />
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.1/dist/locomotive-scroll.css'>
     <title>Jeydi 243</title>
+    <script>
+        document.documentElement.className = "js";
+        var supportsCssVars = function() {
+            var e, t = document.createElement("style");
+            return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e
+        };
+        supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
+    </script>
 </head>
 
-<body class="h-full w-full loading">
-    <nav class="container-flui bg-gray-800 bg-opacity-0 h-10 w-full inline-flex space-x-32 items-center absolute justify-center z-10 top-0 right-0">
+<body class="h-full w-full loading" data-scroll-container>
+    <nav class="container-fluid bg-gray-800 bg-opacity-0 h-10 w-full inline-flex space-x-32 items-center absolute justify-center z-10 top-0 right-0">
         <p class="text-6xl md:text-white">Jeydi</p>
         <li class="flex space-x-7 items-center justify-start">
             <a class="text-base text-center text-white" href="#home">Home</a>
@@ -24,20 +35,20 @@
         </li>
         <!-- <p class="text-xl text-right text-gray-900">+621 2345 6789</p> -->
     </nav>
-    <div class="w-screen h-screen border-b-2 z-0 relative top-0 left-0" id="home">
+    <section class="w-screen h-screen  border-b-2 z-0 relative top-0 left-0" id="home" data-scroll-section>
         <div class="flex flex-col my-auto">
-            <img class="object-fill h-48 w-48 inline-block relative top-12 ml-20" src="./assets/images/168f5486-cdcf-42f0-97d6-2db7e0f26657.png" alt="" srcset="" />
+            <img class="object-fill h-48 w-48 inline-block relative top-12 ml-20" src="./img/avatar1.png" alt="" srcset="" />
             <div class="flex-1 text-left mt-5 pt-5 ml-20 inline">
                 <p class="text-white text-left font-playfair text-4xl leading-loose menu">
                     <span class="text-6xl font-bold font-playfair"> Hi, I'm</span>
 
-                    <a class="menu__item" data-img="img/1.png">
+                    <a class="menu__item" data-img="img/epa/1.jpg">
                         <span class="menu__item-inner-wrap">
                             <span id="epa" class="menu__item-inner font-playfair text-6xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-indigo-500 to-green-500">Epa</span>
                         </span>
                     </a>,</br>
                     <span class="font-playfair text-4xl">a Lubumbashi based</span>
-                    <a class="menu__item" data-img="img/2.png">
+                    <a class="menu__item" data-img="img/epa/2.jpg">
                         <span class="menu__item-inner-wrap">
                             <span class="menu__item-inner font-playfair text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-yellow-500 to-green-500">
                                 Mobile
@@ -46,12 +57,12 @@
                     </a>,
                     <a class="menu__item">
                         <span class="menu__item-inner-wrap">
-                            <span data-img="img/3.png" class="menu__item-inner font-playfair text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-fuchsia-500">
+                            <span data-img="img/epa/3.jpg" class="menu__item-inner font-playfair text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-fuchsia-500">
                                 Desktop
                             </span>
                         </span>
                     </a> and
-                    <a class="menu__item" data-img="img/4.png">
+                    <a class="menu__item" data-img="img/epa/4.jpg">
                         <span class="menu__item-inner-wrap">
                             <span class="font-playfair text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-green-500">
                                 Web
@@ -62,12 +73,12 @@
             </div>
             <div class="flex-1"></div>
         </div>
-    </div>
-    <div class="bg-gray-800 w-screen h-screen mx-auto" id="services">
+    </section>
+    <section class="bg-gray-800 w-screen h-screen mx-auto" id="services" data-scroll-section>
         <div class="flex flex-row">
-            <img src="./assets/images/168f5486-cdcf-42f0-97d6-2db7e0f26657.png" />
-            <div class="flex-auto">
-                <span class="font-tinos font-bold">Lorem ipsum dolor sit amet consectetur adipisicing
+            <img src="./img/avatar1.png" data-scroll class="fancy" />
+            <div class="flex-auto" data-scroll data-scroll-id>
+                <span class="font-tinos font-bold ">Lorem ipsum dolor sit amet consectetur adipisicing
                     elit. Dolorem sapiente, perspiciatis exercitationem
                     sequi aperiam perferendis voluptates nisi. Ducimus,
                     temporibus consectetur corrupti quisquam vel voluptate
@@ -75,26 +86,33 @@
                     fugiat!</span>
             </div>
             <div class="flex-1">
-                <img src="./assets/images/164d0e1a-cd9f-442e-be8e-18c74acfd67c.png" />
+                <img src="./img/avatar1.png" />
             </div>
         </div>
-    </div>
-    <div class="bg-gray-900 w-screen h-screen mx-auto" id="portfolio">
-
-    </div>
-    <div class="bg-gray-800 w-screen h-screen details mx-auto" id="services">
-        <div data-scroll class="relative img-test h-3/4 w-3/4 rounded-md object-cover" src="./assets/images/aurora.jpg"></div>
-    </div>
-    <div class="bg-gray-900 w-screen h-screen mx-auto" id="testimonials">
-    </div>
-    <div class="bg-gray-800 w-screen h-screen mx-auto" id="contact">
-
-    </div>
+    </section>
+    <section class="bg-gray-900 w-screen h-screen mx-auto" id="portfolio" data-scroll-section></section>
+    <section class="bg-gray-800 w-screen h-screen details mx-auto" id="services" data-scroll-section>
+        <p class="text">Taitō</p>
+    </section>
+    <section class="bg-gray-900 w-screen h-screen mx-auto" id="testimonials" data-scroll-section></section>
+    <section class="bg-gray-800 w-screen h-screen mx-auto" id="contact" data-scroll-section> </section>
     <svg class="cursor" width="30" height="30" viewBox="0 0 30 30">
         <circle class="cursor__inner" cx="15" cy="15" r="7.5" />
     </svg>
+
+    <section data-scroll-section>
+        <h1 data-scroll>Hey</h1>
+        <p data-scroll>👋</p>
+    </section>
+    <section data-scroll-section>
+        <h2 data-scroll data-scroll-speed="1">What's up?</h2>
+        <p data-scroll data-scroll-speed="2">😬</p>
+    </section>
+
     <canvas id="canvas" height="150" width="300"></canvas>
-    <script src="./assets/index.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.1/dist/locomotive-scroll.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="./index.js" type="text/javascript"></script>
     <script></script>
 </body>
 
