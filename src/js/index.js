@@ -1,6 +1,5 @@
 import { gsap } from 'gsap'
 import '../css/style.css'
-// import '../css/base.css'
 import '../img/epa/1.jpg'
 import '../img/epa/2.jpg'
 import '../img/epa/3.jpg'
@@ -8,40 +7,44 @@ import '../img/epa/4.jpg'
 import '../img/epa/5.jpg'
 import '../img/epa/6.jpg'
 import LocomotiveScroll from 'locomotive-scroll'
+import fr from '../img/logoepa-v2.jpg'
 import { preloadImages, preloadFonts } from './utils'
 import { preloader } from './preloader'
 import Cursor from './cursor'
 import { ScrollTrigger } from 'gsap/all'
-gsap.registerPlugin(ScrollTrigger)
-var idddd = document.querySelector('[data-scroll-id]')
-
+// gsap.registerPlugin(ScrollTrigger)
+// var idddd = document.querySelector('[data-scroll-id]')
+// var home = document.querySelector('#home')
+// home.textContent = idddd
+// home.style.backgroundUrl = `url(${fr})`;
 const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true,
-})
-scroll.on('scroll', ScrollTrigger.update)
-let animation = gsap.timeline('.fancy', {
-    x: 100,
-    y: 200,
-})
-console.log({ idddd })
-ScrollTrigger.create({
-    trigger: '#home',
-    start: '50% 50%',
-    end: '+=300',
-    animation: animation,
-    onEnter: ({ progress, direction, isActive }) =>
-        console.log(progress, direction, isActive),
-})
+        el: document.querySelector('[data-scroll-container]'),
+        smooth: true,
+        multiplier: 1,
+    })
+    // scroll.on('scroll', ScrollTrigger.update)
+    // let animation = gsap.timeline('.fancy', {
+    //     x: 100,
+    //     y: 200,
+    // })
+    // console.log({ idddd })
+    // ScrollTrigger.create({
+    //     trigger: '#home',
+    //     start: '50% 50%',
+    //     end: '+=300',
+    //     animation: animation,
+    //     onEnter: ({ progress, direction, isActive }) =>
+    //         console.log(progress, direction, isActive),
+    // })
 
 const sticky = document.querySelector('.sticky')
 var epa = document.getElementById('epa')
 var leftEm = document.querySelector('.leftEm')
-var canvas = document.querySelector('#canvas')
+    // var canvas = document.querySelector('#canvas')
 
-var ctx = canvas.getContext('2d')
-ctx.fillStyle = 'green'
-ctx.fillRect(10, 10, 100, 100)
+// var ctx = canvas.getContext('2d')
+// ctx.fillStyle = 'green'
+// ctx.fillRect(10, 10, 100, 100)
 window.addEventListener('load', (event) => {
     gsap.fromTo(
         '#epa', { x: 100 }, {
@@ -50,6 +53,7 @@ window.addEventListener('load', (event) => {
         }
     )
 })
+console.log('Loaded...')
 
 //Preload images and fonts
 // Promise.all([

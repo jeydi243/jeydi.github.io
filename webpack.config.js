@@ -6,20 +6,18 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 module.exports = {
     entry: './src/js/index.js',
     mode: 'development',
-    // devtool: 'source-map',
-    watch: true,
+    devtool: 'source-map',
+    // watch: true,
     output: {
         path: path.resolve(__dirname, './public/'),
-        publicPath: '',
+        publicPath: path.resolve(__dirname, './public/'),
         filename: 'index.js',
     },
     stats: {
         errorDetails: false,
-
     },
-    node: { global: true },
     devServer: {
-        contentBase: path.resolve(__dirname, './'),
+        contentBase: path.resolve(__dirname, './public/'),
         compress: true,
         port: 9000,
         hot: true,
@@ -30,19 +28,20 @@ module.exports = {
                 test: /\.css$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    { loader: 'css-loader', options: { url: false } },
                     'postcss-loader',
-                    'sass-loader',
+                    // 'sass-loader',
                 ],
             },
             {
                 test: /\.svg$/,
                 loader: 'svg-inline-loader',
+                type: 'asset/inline',
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
                 loader: 'file-loader',
-                type: 'asset',
+                // type: 'asset/resource',
                 options: {
                     name: '[name].[ext]',
                     outputPath: (url, resourcePath, context) => {
@@ -69,7 +68,6 @@ module.exports = {
                         ],
                     },
                 },
-
             },
 
             // {

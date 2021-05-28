@@ -4,7 +4,7 @@
     "description": "A personal portfolio",
     "main": "src/js/index.js",
     "scripts": {
-        "start": "webpack",
+        "start": "webpack serve",
         "start:parcel": "parcel public/index.html --open",
         "clean": "rm -rf dist/*",
         "build:parcel": "parcel build public/index.html --no-content-hash --no-minify --no-source-maps --public-url ./public",
