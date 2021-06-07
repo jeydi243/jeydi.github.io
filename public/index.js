@@ -11659,17 +11659,18 @@ window.addEventListener('load', function (event) {
         //     y: 30,
         //     ease: 'power1.inOut',
         // })
-      }
-
-      gsap__WEBPACK_IMPORTED_MODULE_5__.gsap.from('.char', {
-        duration: 0.5,
-        opacity: 0,
-        stagger: 0.02,
-        y: 30,
-        ease: 'power1.inOut'
-      }); // args.currentElements.forEach((ele, index, array) => {})
+      } // args.currentElements.forEach((ele, index, array) => {})
       // tl.progress(progress)
+
     }
+
+    gsap__WEBPACK_IMPORTED_MODULE_5__.gsap.from('.char', {
+      duration: 0.5,
+      opacity: 0,
+      stagger: 0.02,
+      y: 30,
+      ease: 'power1.inOut'
+    });
   });
 });
 })();

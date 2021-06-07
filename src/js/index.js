@@ -70,15 +70,16 @@ window.addEventListener('load', (event) => {
                 //     ease: 'power1.inOut',
                 // })
             }
-            gsap.from('.char', {
-                duration: 0.5,
-                opacity: 0,
-                stagger: 0.02,
-                y: 30,
-                ease: 'power1.inOut',
-            })
+
             // args.currentElements.forEach((ele, index, array) => {})
             // tl.progress(progress)
         }
+        gsap.from('.char', {
+            duration: 0.5,
+            opacity: 0,
+            stagger: 0.02,
+            y: 30,
+            ease: 'power1.inOut',
+        })
     })
 })
