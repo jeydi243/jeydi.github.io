@@ -11570,18 +11570,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var splitting__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(splitting__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var locomotive_scroll__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! locomotive-scroll */ "./node_modules/locomotive-scroll/dist/locomotive-scroll.esm.js");
 /* provided dependency */ var console = __webpack_require__(/*! console-browserify */ "./node_modules/console-browserify/index.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -11594,85 +11582,54 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 splitting__WEBPACK_IMPORTED_MODULE_3___default()();
 var sticky = document.querySelector('.sticky');
 var loading = document.getElementById('loading');
+var value = document.getElementById('value');
 var scroll = new locomotive_scroll__WEBPACK_IMPORTED_MODULE_4__.default({
   el: document.querySelector('[data-scroll-container]'),
   smooth: true,
-  // multiplier: 1,
   offset: ['30%', 0],
-  repeat: true,
+  // repeat: true,
+  // reloadOnContextChange: true,
   tablet: {
     smooth: false
   },
   smartphone: {
-    smooth: false
+    smooth: true
   }
 });
 window.addEventListener('load', function (event) {
-  // gsap.registerPlugin(ScrollTrigger)
-  // scroll.on('scroll', ScrollTrigger.update)
-  // ScrollTrigger.scrollerProxy('.smooth-scroll', {
-  //     scrollTop(value) {
-  //         return arguments.length
-  //             ? locoScroll.scrollTo(value, 0, 0)
-  //             : locoScroll.scroll.instance.scroll.y
-  //     },
-  //     getBoundingClientRect() {
-  //         return {
-  //             top: 0,
-  //             left: 0,
-  //             width: window.innerWidth,
-  //             height: window.innerHeight,
-  //         }
-  //     },
-  // })
-  // var tl = gsap.timeline({ repeat: 2, repeatDelay: 1 })
-  // setTimeout(function () {
-  //     tl.to('.char', {
-  //         duration: 0.8,
-  //         stagger: 0.02,
-  //         opacity: 1,
-  //         y: 0,
-  //         ease: 'elastic',
-  //     })
-  // }, 4000)
   scroll.on('scroll', function (args) {
-    if (_typeof(args.currentElements['epa']) === 'object') {
-      // let progress = args.currentElements['epa'].progress
-      console.dir(args.currentElements); // var element = args.currentElements['epa']
-      // gsap.from(`#${element.section.el.id}.char`, {
-      //     duration: 0.8,
-      //     opacity: 0,
-      //     stagger: 0.02,
-      //     y: 20,
-      //     ease: 'elastic',
-      // })
+    var progress = {};
+    console.log(args);
 
-      for (var _i = 0, _Object$entries = Object.entries(args.currentElements); _i < _Object$entries.length; _i++) {
-        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-            key = _Object$entries$_i[0],
-            value = _Object$entries$_i[1];
+    if (condition) {} else {}
 
-        var element = value; // gsap.from(`#${element.section.el.id} * .char`, {
-        //     duration: 0.5,
-        //     opacity: 0,
-        //     stagger: 0.02,
-        //     y: 30,
-        //     ease: 'power1.inOut',
-        // })
-      } // args.currentElements.forEach((ele, index, array) => {})
-      // tl.progress(progress)
-
-    }
-
-    gsap__WEBPACK_IMPORTED_MODULE_5__.gsap.from('.char', {
-      duration: 0.5,
-      opacity: 0,
-      stagger: 0.02,
-      y: 30,
-      ease: 'power1.inOut'
-    });
+    if (_typeof(args.currentElements['hey']) === 'object') {
+      var _progress = args.currentElements['hey'].progress;
+      console.log(_progress);
+    } else if (_typeof(args.currentElements['hey']) === 'object') {} else if (_typeof(args.currentElements['hey']) === 'object') {} else if (_typeof(args.currentElements['hey']) === 'object') {} else if (_typeof(args.currentElements['hey']) === 'object') {}
   });
 });
+
+function scrollInInview() {
+  gsap__WEBPACK_IMPORTED_MODULE_5__.gsap.from(".is-inview", {
+    duration: 2,
+    opacity: 0,
+    stagger: 0.02,
+    y: 30,
+    skewX: 10,
+    repeat: false,
+    ease: 'elastic.out(1,0.3)'
+  });
+  gsap__WEBPACK_IMPORTED_MODULE_5__.gsap.from(".char", {
+    duration: 2,
+    opacity: 0,
+    stagger: 0.02,
+    y: 30,
+    skewX: 5,
+    repeat: false,
+    ease: 'power1.inOut'
+  });
+}
 })();
 
 /******/ })()

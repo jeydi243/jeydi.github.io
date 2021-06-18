@@ -10,6 +10,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 #home {
     background-image: url('../img/epa/logoepa-v2.png');
+    backdrop-filter: blur(6px);
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -53,10 +54,6 @@
 .glass {
     backdrop-filter: blur(6px);
 }
-/* [data-scroll] {
-    opacity: 0;
-    transform: translateY(-20px);
-} */
 .text {
     /* background: url('../img/logoepa-v2.jpg') center; */
     background-clip: text;
