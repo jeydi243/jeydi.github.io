@@ -1,6 +1,6 @@
-*** Portfolio version 1
+### Portfolio version 1
 
-# Run 
+#### Run 
 1. npm install
 2. npm start
 3. Open index file at root
