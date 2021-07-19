@@ -23,23 +23,10 @@ const preloadImages = (selector = 'img') => {
     });
 };
 
-// Preload images
-const preloadFonts = (id) => {
-    return new Promise((resolve) => {
-        WebFont.load({
-            typekit: {
-                id: id
-            },
-            active: resolve
-        });
-    });
-};
-
 export {
     map,
     clamp,
     lerp,
     getMousePos,
     preloadImages,
-    preloadFonts
 };

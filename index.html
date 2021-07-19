@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base href="./" />
-    <link rel="shortcut icon" href="favicon.ico">
+    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
     <link rel="stylesheet" href="./public/css/main.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="stylesheet" href="https://use.typekit.net/zkq2mjw.css">
@@ -14,160 +14,161 @@
     <title>Jeydi 243</title>
 </head>
 
-<body data-scroll-container>
+<body>
     <!-- <div id="loading" class="loading">
         <img id="loading-image" src="img/principale.gif" alt="Loading..." />
     </div> -->
-    <div id="value" class="sticky z-3 bg-green-200 w-5 top-0 left-0"></div>
-    <nav class="container-fluid bg-gray-800 bg-opacity-0 h-14 w-full inline-flex space-x-32 items-center absolute justify-center z-10 top-0 right-0">
-        <p class="text-6xl md:text-white" data-splitting>Jeydi</p>
-        <li class="flex space-x-7 items-center justify-start">
-            <a class="text-base text-center text-white" href="#home" data-splitting>Home</a>
-            <a class="text-base text-center text-white" href="#about" data-splitting>About</a>
-            <a class="text-base text-center text-white" href="#services" data-splitting>Services</a>
-            <a class="text-base text-center text-white" href="#portfolio" data-splitting>Portfolio</a>
-            <a class="text-base text-center text-white" href="#contact" data-splitting>Contact</a>
-            <a class="text-base text-center text-white" href="#testimonials" data-splitting>Testimonials</a>
-        </li>
-        <!-- <p class="text-xl text-right text-gray-900">+621 2345 6789</p> -->
-    </nav>
-    <section class="w-screen h-screen z-0 relative top-0 left-0 flex flex-col" id="home" data-scroll-section>
-        <img class="object-fill h-48 w-48 inline-block relative top-12 ml-20" src="./public/img/avatar1.png" alt="Avatar epa" data-scroll data-scroll-speed="2" data-scroll-id="avatarId" />
-        <div class="flex-1 text-left mt-5 pt-5 ml-20 inline" data-scroll data-scroll-speed="2" data-scroll-id="textInHome">
-            <p class="text-white text-left font-tinos text-4xl leading-loose menu" data-splitting>
-                <span class="text-6xl font-bold font-tinos" data-splitting>Hi, I'm</span>
-                <span class="font-tinos text-6xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-indigo-500 to-green-500">Epa</span>,</br>
-                <span class="font-tinos text-4xl" data-splitting>a Lubumbashi based</span>
-                <span class="font-tinos text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-yellow-500 to-green-500">
-                    Mobile
-                </span>,
-                <span  data-img="img/epa/3.jpg" class="font-tinos text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-fuchsia-500">
-                    Desktop
-                </span> <span data-splitting>and</span>
-                <span class="font-tinos text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-green-500">
-                    Web
-                </span><span>Developer</span>
+
+    <main data-scroll-container>
+        <nav class="nav" data-scroll-sticky data-scroll-section id="nav">
+            <ul class="flex space-x-7 items-center justify-start font-k2d">
+                <li><a class="text-base text-center text-white" href="#home" data-splitting data-scroll>Home</a></li>
+                <li><a class="text-base text-center text-white" href="#about" data-splitting data-scroll>About</a></li>
+                <li><a class="text-base text-center text-white" href="#services" data-splitting data-scroll>Services</a></li>
+                <li><a class="text-base text-center text-white" href="#portfolio" data-splitting data-scroll>Portfolio</a></li>
+                <li><a class="text-base text-center text-white" href="#contact" data-splitting data-scroll>Contact</a></li>
+                <li><a class="text-base text-center text-white" href="#testimonials" data-splitting data-scroll>Testimonials</a></li>
+            </ul>
+            <!-- <p class="text-xl text-right text-gray-900">+621 2345 6789</p> -->
+        </nav>
+        <section class="section1 z-0 relative top-0 left-0 bg-center bg-cover" id="home" data-scroll-section>
+            <div class="flex flex-row">
+                <div class="flex flex-col w-2/3 h-full">
+                    <div class="absolute top-4 left-1 z-0" data-scroll>
+                        <div class="box-animate-blue" data-scroll></div>
+                        <div class="box-animate-red" data-scroll></div>
+                        <div class="box-animate-yellow" data-scroll></div>
+                        <div class="box-animate-teal" data-scroll></div>
+                        <div class="rounded-full bg-blue-600 absolute top-8 bottom-6 h-52 w-52 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-6000" data-scroll></div>
+                    </div>
+                    <img class="ml-20 object-fill w-48 inline-block relative top-12" src="./public/img/avatar1.png" alt="Avatar epa" data-scroll data-scroll-repeat="true" data-scroll-speed="2" data-scroll-id="avatarId" />
+                    <div class="ml-20 text-left text-black mt-5 pt-5 inline" data-scroll data-scroll-repeat="true" data-scroll-speed="2" data-scroll-id="textInHome">
+                        <p class="text-white text-left font-k2d text-4xl leading-loose italic" data-splitting>
+                            <span class="text-6xl font-bold font-k2d">Hi, I'm </span>
+                            <span class="font-k2d text-6xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-teal-300">Epa</span>,</br>
+                            <span class="font-k2d text-4xl">A Lubumbashi based </span>
+                            <span class="font-k2d text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-teal-500">
+                                Mobile
+                            </span>,
+                            <span href="#mobile" data-img="img/epa/3.jpg" class="font-k2d text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-fuchsia-500">
+                                Desktop
+                            </span> <span>and </span>
+                            <span class="font-k2d text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-green-500">
+                                Web
+                            </span><span>Developer</span>
+                        </p>
+                    </div>
+                    <button class="ml-20 cybr-btn w-1/5 font-k2d" data-scroll data-scroll-repeat="true" data-scroll-speed="3" data-scroll-direction="vertical" data-scroll-id="btnCta">
+                        Voir plus<span aria-hidden>_</span>
+                    </button>
+                </div>
+                <div class="flex flex-col w-1/3 h-screen justify-center place-items-center" id="target_epa">
+                    <img src="public/img/epa/2.jpg" id="epaImage" class="object object-cover rounded-lg w-3/5 h-2/3 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 skew-x-1" data-scroll>
+                </div>
+            </div>
+        </section>
+        <section class="section2" id="about" data-scroll-section>
+            <span data-scroll-call="about" data-scroll></span>
+            <p class="font-k2d text-blue-500 text-8xl text-center" data-splitting data-scroll data-scroll-repeat="true" data-scroll-delay="2" data-scroll-repeat="true">About</p>
+        </section>
+        <section class="section1" id="portfolio" data-scroll-section>
+            <span data-scroll-call="portfolio" data-scroll></span>
+            <p class="font-k2d text-yellow-300 text-8xl text-center" data-splitting data-scroll data-scroll-repeat="true" data-scroll-delay="2" data-scroll-repeat="true">Portfolio</p>
+        </section>
+        <section class="section2" id="services" data-scroll-section>
+            <span data-scroll-call="services" data-scroll></span>
+            <p class="font-k2d text-green-500 text-8xl text-center" data-splitting data-scroll data-scroll-repeat="true" data-scroll-delay="2" data-scroll-repeat="true">Services</p>
+            <div class="flex flex-row mt-5">
+                <div class="w-1/3 flex flex-col h-2/3 bg-gray-300">
+                    <p class="text-center text-white font-k2d text-4xl space-x-4">Mobile Development </p>
+                </div>
+                <div class="w-1/3 flex flex-col">
+                    <p class="text-center text-white font-k2d text-4xl">Web Development </p>
+                </div>
+                <div class="w-1/3 flex flex-col">
+                    <p class="text-center text-white font-k2d text-4xl">Desktop Development </p>
+                </div>
+            </div>
+        </section>
+        <section class="section1" id="testimonials" data-scroll-section>
+            <span data-scroll-call="testimonials" data-scroll></span>
+            <p class="font-k2d text-teal-300 text-8xl text-center" data-splitting data-scroll data-scroll-repeat="true" data-scroll-delay="2" data-scroll-repeat="true">
+                Testimonials
             </p>
-        </div>
-    </section>
-    <section class="bg-gray-800 w-screen h-screen flex flex-row backdrop-blur-md bg-fixed" id="services" data-scroll-section>
-        <!-- <img src="./public/img/avatar1.png" height="200" width="200" data-scroll data-scroll-speed="2" data-scroll-id="avatarInService" /> -->
-        <div class="flex-auto" >
-            <span data-scroll data-scroll-id="epa3" class="font-tinos font-bold  text-2xl text-blue-500" data-splitting>Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Dolorem sapiente, perspiciatis exercitationem
-                sequi aperiam perferendis voluptates nisi. Ducimus,
-                temporibus consectetur corrupti quisquam vel voluptate
-                ratione, facere culpa, consequuntur impedit
-                fugiat!</span>
-        </div>
-        <!-- <img src="./public/img/avatar1.png" height="200" width="200" data-scroll data-scroll-id="avatarInService2" /> -->
-    </section>
-    <section class="bg-gray-900 w-screen h-screen mx-auto" id="portfolio" data-scroll-section>
-        <div class="flex flex-row">
-            <img src="./public/img/avatar1.png" height="200" width="200" data-scroll class="fancy" data-scroll-speed="2" data-scroll-delay="3" data-scroll-id="avatarInPortfolio2" />
-            <div class="flex-auto">
-                <span data-scroll data-scroll-id="textInPortfolio" class="font-tinos font-bold  text-2xl text-blue-500" data-splitting>
-                    Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolorem sapiente, perspiciatis exercitationem
-                    sequi aperiam perferendis voluptates nisi. Ducimus,
-                    temporibus consectetur corrupti quisquam vel voluptate
-                    ratione, facere culpa, consequuntur impedit
-                    fugiat!</span>
+        </section>
+        <section class="section2" id="contact" data-scroll-section>
+            <span data-scroll-call="contact" data-scroll></span>
+            <div class="w-screen h-screen absolute top-1/2 left-1/2 z-0">
+                <div class="rounded-full bg-purple-500 absolute top-2 right-8 h-52 w-48 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000" data-scroll></div>
+                <div class="rounded-full bg-red-500 absolute top-2 left-14 h-28 w-32 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000" data-scroll></div>
+                <div class="rounded-full bg-purple-500 absolute top-6 right-6 h-24 w-52 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000" data-scroll></div>
+                <div class="rounded-full bg-yellow-300 absolute top-2 bottom-6 h-52 w-36 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-6000" data-scroll></div>
+                <div class="rounded-full bg-red-500 absolute top-2 left-14 h-52 w-52 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000" data-scroll></div>
             </div>
-            <img src="./public/img/avatar1.png" height="200" width="200" data-scroll-id="avatarInPortfolio2" />
-        </div>
-    </section>
-    <section class="bg-gray-800 w-screen h-screen details mx-auto" id="services" data-scroll-section>
-        <div class="flex flex-row">
-            <img src="./public/img/avatar1.png" height="200" width="200" data-scroll class="fancy" data-scroll-speed="2" />
-            <div class="flex-auto" >
-                <span data-scroll data-scroll-id="epa" class="font-tinos font-bold  text-2xl text-blue-500" data-splitting>Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolorem sapiente, perspiciatis exercitationem
-                    sequi aperiam perferendis voluptates nisi. Ducimus,
-                    temporibus consectetur corrupti quisquam vel voluptate
-                    ratione, facere culpa, consequuntur impedit
-                    fugiat!</span>
-            </div>
-            <img src="./public/img/avatar1.png" height="200" width="200" data-scroll data-scroll-speed="2" />
-        </div>
-    </section>
-    <section class="bg-gray-900 w-screen h-screen mx-auto" id="testimonials" data-scroll-section>
-        <div class="flex flex-row">
-            <img src="./public/img/avatar1.png" height="200" width="200" data-scroll class="fancy" data-scroll-speed="2" />
-            <div class="flex-auto" >
-                <span data-scroll data-scroll-id="epa2" class="font-tinos font-bold  text-2xl text-blue-500" data-splitting>Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolorem sapiente, perspiciatis exercitationem
-                    sequi aperiam perferendis voluptates nisi. Ducimus,
-                    temporibus consectetur corrupti quisquam vel voluptate
-                    ratione, facere culpa, consequuntur impedit
-                    fugiat!</span>
-            </div>
-            <img src="./public/img/avatar1.png" height="200" width="200" data-scroll data-scroll-speed="2" />
-        </div>
-    </section>
-    <section class="bg-own w-screen h-screen" id="contact" data-scroll-section>
-        <div class="flex flex-row h-full w-screen justify-center">
-            <div class="flex-1 text-left leading-5 ml-24 mt-24">
-                <div class="flex flex-col space-y-8" data-scroll>
-                    <p class="wrapper font-tinos text-3xl border-separate border-l-2 border-yellow-200">
-                        <span class="text-white font-bold pl-3" data-scroll data-scroll-repeat>Contact</span>
-                        <span id="epa" class="text-transparent font-bold bg-gradient-to-r bg-clip-text from-blue-500 via-indigo-500 to-green-500" data-scroll>Me</span>
-                    </p>
-                    <p class="text-white font-tinos text-md" data-scroll data-scroll-repeat data-splitting>I provide high standard clean website and Mobile Apps <br>Just text me</p>
-                    <div class="items flex flex-col space-y-3">
-                        <div class="item flex flex-row space-x-3 ">
-                            <div class="rounded-full h-14 w-14 bg-yellow-400" data-scroll></div>
-                            <p class="font-tinos subpixel-antialiased">
-                                <span class="text-yellow-300" data-splitting>Call me</span><br>
-                                <span class="text-white font-tinos" data-splitting>+243897949336</span>
-                            </p>
-                        </div>
-                        <div class="item flex flex-row space-x-3 align-middle">
-                            <div class="rounded-full h-14 w-14 bg-yellow-400" data-scroll></div>
-                            <p class=" inline-block align-middle font-tinos subpixel-antialiased">
-                                <span class="text-yellow-300" data-splitting>Email me</span><br>
-                                <span class="text-white" data-splitting>ekadiongo@gmail.com</span>
-                            </p>
+            <div class="w-screen h-screen relative top-0 left-0 flex flex-row justify-center z-10">
+                <div class="flex-1 text-left leading-5 ml-24 mt-24">
+                    <div class="flex flex-col space-y-8" data-scroll>
+                        <p class="wrapper font-k2d text-3xl border-separate border-l-2 border-yellow-200">
+                            <span class="text-white font-bold pl-3" data-scroll data-scroll-repeat="true" data-splitting="">Contact</span>
+                            <span id="epa" class="text-transparent font-bold bg-gradient-to-r bg-clip-text from-blue-500 via-indigo-500 to-green-500" data-scroll>Me</span>
+                        </p>
+                        <p class="text-white font-k2d text-md" data-scroll data-scroll-repeat="true" data-splitting>I provide high standard clean website and Mobile Apps <br>Just text me</p>
+                        <div class="items flex flex-col space-y-3">
+                            <div class="item flex flex-row space-x-3 ">
+                                <div class="rounded-full h-14 w-14 bg-yellow-400" data-scroll></div>
+                                <p class="font-k2d subpixel-antialiased">
+                                    <span class="text-yellow-300" data-splitting data-scroll>Call me</span><br>
+                                    <span class="text-white font-k2d" data-splitting data-scroll>+243897949336</span>
+                                </p>
+                            </div>
+                            <div class="item flex flex-row space-x-3 align-middle">
+                                <div class="rounded-full h-14 w-14 bg-yellow-400" data-scroll></div>
+                                <p class=" inline-block align-middle font-k2d subpixel-antialiased">
+                                    <span class="text-yellow-300" data-splitting data-scroll>Email me</span><br>
+                                    <span class="text-white" data-splitting data-scroll>ekadiongo@gmail.com</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="flex-1 ml-24 mt-24">
+                    <form action="" method="get" class="px-5 py-2 block flex-col  space-y-5 hover:ring-opacity-05 w-4/5 rounded-lg border-t-2 border-yellow-300 transition duration-1000 ease">
+                        <div class="w-full border-fuchsia-600" data-scroll data-splitting>
+                            <label for="name" class="font-medium text-white block">Name</label>
+                            <input type="text" name="name" id="name" class="w-full border-dashed border-0 border-b-2 focus:border-dashed focus:text-white text-white rounded focus-visible:border-0 focus:border-b-2 border-blue-500 focus-within:ring-0 ring-0 bg-yellow-200 bg-opacity-10">
+                        </div>
+                        <div class="w-full border-fuchsia-600" data-scroll data-splitting>
+                            <label for="name" class="font-medium text-sm text-white block">Email</label>
+                            <input type="email" name="email" id="" class="border-dashed border-0 border-b-2 focus:border-dashed focus:text-white text-white rounded focus-visible:border-0 focus:border-b-2 border-blue-500 focus-within:ring-0 ring-0 w-full bg-yellow-200 bg-opacity-10">
+                        </div>
+                        <div class="w-full border-fuchsia-600" data-scroll data-splitting>
+                            <label for="subject" class="font-medium text-sm text-white block">Sujet</label>
+                            <input type="text" name="subject" id="" class="border-dashed border-0 border-b-2 focus:border-dashed focus:text-white text-white rounded focus-visible:border-0 focus:border-b-2 border-blue-500 focus-within:ring-0 ring-0 w-full bg-yellow-200 bg-opacity-10">
+                        </div>
+                        <div class="w-full border-fuchsia-600" data-scroll data-splitting>
+                            <label for="message" class="font-medium text-sm text-white block">Message</label>
+                            <textarea type="text" name="message" id="message" class="border-dashed border-0 border-b-2 focus:border-dashed focus:text-white text-white rounded focus-visible:border-0 focus:border-b-2 border-blue-500 focus-within:ring-0 ring-0 w-full bg-yellow-200 bg-opacity-10"></textarea>
+                        </div>
+                        <div class="pt-6">
+                            <button type="submit" class="bg-yellow-300 block rounded w-full h-10 focus:ring-0">Get contact</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="flex-1 ml-24 mt-24">
-                <form action="" method="get" class="px-5 py-2 block flex-col bg-teal-300 space-y-5 hover:ring-opacity-05 w-4/5 rounded-lg border-t-2 border-yellow-300 transition duration-1000 ease">
-                    <div class="w-full  border-fuchsia-600" data-scroll>
-                        <label for="name" class="font-medium text-white block">Name</label>
-                        <input type="text" name="name" id="name" class="w-full border-dashed border-0 border-b-2 focus:border-dashed focus:text-white text-white rounded focus-visible:border-0 focus:border-b-2 border-blue-500 focus-within:ring-0 ring-0 bg-yellow-200 bg-opacity-10">
-                    </div>
-                    <div class="w-full  border-fuchsia-600" data-scroll>
-                        <label for="name" class="font-medium text-sm text-white block">Email</label>
-                        <input type="email" name="email" id="" class="border-dashed border-0 border-b-2 focus:border-dashed focus:text-white text-white rounded focus-visible:border-0 focus:border-b-2 border-blue-500 focus-within:ring-0 ring-0 w-full bg-yellow-200 bg-opacity-10">
-                    </div>
-                    <div class="w-full  border-fuchsia-600" data-scroll>
-                        <label for="subject" class="font-medium text-sm text-white block">Sujet</label>
-                        <input type="text" name="subject" id="" class="border-dashed border-0 border-b-2 focus:border-dashed focus:text-white text-white rounded focus-visible:border-0 focus:border-b-2 border-blue-500 focus-within:ring-0 ring-0 w-full bg-yellow-200 bg-opacity-10">
-                    </div>
-                    <div class="w-full  border-fuchsia-600" data-scroll>
-                        <label for="message" class="font-medium text-sm text-white block">Message</label>
-                        <textarea type="text" name="message" id="message" class="border-dashed border-0 border-b-2 focus:border-dashed focus:text-white text-white rounded focus-visible:border-0 focus:border-b-2 border-blue-500 focus-within:ring-0 ring-0 w-full bg-yellow-200 bg-opacity-10"></textarea>
-                    </div>
-                    <div class="pt-6">
-                        <button type="submit" class="bg-yellow-300 block rounded w-full h-10 focus:ring-0">Get contact</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-    <svg class="cursor" width="30" height="30" viewBox="0 0 30 30">
-        <circle class="cursor__inner" cx="15" cy="15" r="7.5" />
-    </svg>
-    <footer class="relative bottom-0 left-0 h-full bg-own">
-        <div>Icônes conçues par <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/fr/" title="Flaticon">www.flaticon.com</a></div>
-    </footer>
-    <canvas id="canvas" height="150" width="300"></canvas>
+        </section>
+
+        <footer class="relative bottom-0 left-0 h-full bg-own" data-scroll-section>
+            <span data-scroll-call="footer" data-scroll></span>
+            <svg class="cursor" width="30" height="30" viewBox="0 0 30 30">
+                <circle class="cursor__inner" cx="15" cy="15" r="7.5" />
+            </svg>
+            <div>Icônes conçues par <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/fr/" title="Flaticon">www.flaticon.com</a></div>
+        </footer>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.1/dist/locomotive-scroll.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script src="./public/index.js" type="text/javascript"></script>
-    <script></script>
 </body>
 
 </html>

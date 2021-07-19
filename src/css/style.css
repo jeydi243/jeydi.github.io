@@ -8,14 +8,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-#home {
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import 'keyframes.css';
+@import 'button.css';
+@import 'nav.css';
+
+.section1 {
+    @apply bg-gray-900 w-screen h-screen mx-auto;
+}
+.section2 {
+    @apply bg-gray-800 w-screen h-screen mx-auto;
+}
+.box-animate-blue {
+    @apply rounded-full bg-purple-500 absolute top-5 right-6 h-20 w-40 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000;
+}
+.box-animate-red {
+    @apply rounded-full bg-red-500 absolute top-2 left-14 h-7 w-7 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000;
+}
+.box-animate-teal {
+    @apply rounded-full bg-teal-300 absolute top-10 bottom-10 h-10 w-36 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000;
+}
+.box-animate-yellow {
+    @apply rounded-full bg-yellow-300 absolute top-12 bottom-6 h-20 w-52 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-6000;
+}
+.nav {
+    @apply container mx-auto bg-gray-800 bg-opacity-0 h-14 w-full inline-flex space-x-32 items-center absolute justify-center z-10 top-0 right-0;
+}
+
+@layer utilities {
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+    .animation-delay-6000 {
+        animation-delay: 6s;
+    }
+}
+/* #home {
     background-image: url('../img/epa/logoepa-v2.png');
     backdrop-filter: blur(6px);
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 #loading {
     width: 100%;
@@ -43,9 +81,6 @@
     vertical-align: middle;
     text-align: center;
 }
-/* * {
-    transition: all 1s ease-in-out;
-} */
 
 .bg-own {
     background-color: #00043c;
@@ -53,6 +88,7 @@
 
 .glass {
     backdrop-filter: blur(6px);
+    filter: blur(1.5rem);
 }
 .text {
     /* background: url('../img/logoepa-v2.jpg') center; */
