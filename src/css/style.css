@@ -95,6 +95,11 @@
     background-clip: text;
     color: transparent;
 }
+/* .init {
+    opacity: 0;
+    -moz-transform: skewY(-10);
+    transform: skewY(-10);
+} */
 
 img {
     transition: position 5s;

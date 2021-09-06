@@ -1,33 +1,24 @@
 import { gsap } from 'gsap'
 import { getMousePos as cursor } from './utils'
-let mouse = { x: 0, y: 0 }
-window.addEventListener('mousemove', (ev) => (mouse = cursor(ev)))
 import '../css/style.css'
+import '../css/form.scss'
 import 'splitting/dist/splitting.css'
 import 'splitting/dist/splitting-cells.css'
 import Splitting from 'splitting'
 import LocomotiveScroll from 'locomotive-scroll'
 import { ScrollTrigger, MotionPathPlugin } from 'gsap/all'
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
-var listID = [
-    'home',
-    'about',
-    'portfolio',
-    'services',
-    'testimonials',
-    'contact',
-    'about',
-]
 Splitting()
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
+let mouse = { x: 0, y: 0 }
 const epa = document.getElementById('epaImage')
-const target_epa = document.getElementById('target_epa')
 const Lscroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     offset: ['30%', 0],
     class: 'inview',
-    // repeat: true,
-    // reloadOnContextChange: true,
+    initClass: 'init',
+    repeat: true,
+    reloadOnContextChange: true,
     tablet: { smooth: false },
     smartphone: { smooth: true },
 })
@@ -57,62 +48,28 @@ function configScroll() {
             : 'fixed',
     })
 }
+window.addEventListener('mousemove', (ev) => (mouse = cursor(ev)))
 window.addEventListener('load', (e) => {
-    e.preventDefault()
     configScroll()
-    window.addEventListener('mousemove', function (ev) {
-        ev.preventDefault()
-        console.log('from Left:', ev.clientX, 'From top:', ev.clientY)
-        const glass = document.createElement('div')
-        glass.id = 'glass'
-        glass.style.position = 'absolute'
-        glass.style.left = ev.clientX
-        glass.style.top = ev.clientY
-        glass.style.zIndex = '20'
-        glass.classList.toggle('glass', 'h-1/5', 'w-1/5')
-        target_epa.appendChild(glass)
-    })
-    gsap.from(`#home .inview`, {
-        duration: 2,
+    gsap.from('.inview .char', {
+        duration: 1,
         opacity: 0,
-        delay: 'random([2,3])',
-        y: 30,
-        skewY: 6,
-        ease: 'back',
-    })
-    gsap.from(`#home .char`, {
-        duration: 2,
-        opacity: 0,
-        delay: 2,
-        y: 30,
-        skewY: 6,
-        ease: 'back',
-    })
-    gsap.from(`#nav .char`, {
-        duration: 2,
-        opacity: 0,
-        delay: 2,
-        y: 30,
+        delay: 1,
+        stagger: 0.1,
+        y: 10,
+
         skewX: 6,
         ease: 'back',
     })
-    Lscroll.on('call', (args) => {
-        console.log(`Just called ${args}`)
-        gsap.from(`#${args} .inview`, {
-            duration: 2,
-            delay: 2,
-            opacity: 0,
-            scrollTrigger: {
-                trigger: `#${args}`,
-                onToggle: (self) => {
-                    console.log(self.progress.toLocaleString())
-                },
-                // start: 'top center', //la premiere valeur fait reference a l'element et la deuxieme fait reference au target
-                toggleActions: 'restart pause restart pause',
-            },
-            y: 30,
-            skewX: 6,
-            ease: 'back',
-        })
+    gsap.from('.inview', {
+        duration: 2,
+        opacity: 0,
+        ease: 'back',
+    })
+    gsap.from('.inview img', {
+        duration: 2,
+        yoyo: true,
+        opacity: 0,
+        ease: 'back',
     })
 })

@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
@@ -43,13 +44,27 @@ module.exports = {
         overlay: true,
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.css$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
                     { loader: 'css-loader', options: { url: false } },
                     'postcss-loader',
-                    // 'sass-loader',
+                ],
+            },
+            {
+                test: /\.(scss|sass)$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
+                    },
                 ],
             },
             {
@@ -73,6 +88,12 @@ module.exports = {
                         }
                         return `img/${url}`
                     },
+                },
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|svg)$/,
+                use: {
+                    loader: 'url-loader',
                 },
             },
             {
@@ -108,6 +129,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
             linkType: 'text/css',
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
         }),
         new NodePolyfillPlugin(),
         // new ImageMinimizerPlugin({
