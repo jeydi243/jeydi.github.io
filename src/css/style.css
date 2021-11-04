@@ -95,18 +95,16 @@
     background-clip: text;
     color: transparent;
 }
-/* .init {
+.init {
     opacity: 0;
-    -moz-transform: skewY(-10);
-    transform: skewY(-10);
-} */
-
-img {
-    transition: position 5s;
 }
 
-/*! locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 
+
+
+
+
+/*! locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 html.has-scroll-smooth {
     overflow: hidden;
 }

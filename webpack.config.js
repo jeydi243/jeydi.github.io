@@ -5,7 +5,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 module.exports = {
-    entry: './src/js/index.js',
+    entry: './src/js/index.ts',
     mode: 'development',
     devtool: 'source-map',
     watch: true,
@@ -42,6 +42,9 @@ module.exports = {
         port: 9000,
         hot: true,
         overlay: true,
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
     module: {
         rules: [
@@ -109,12 +112,11 @@ module.exports = {
                     },
                 },
             },
-
-            // {
-            //     test: /\.(png|jpg|gif)$/i,
-            //     loader: 'url-loader',
-            //     options: { outputPath: 'img' },
-            // },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ],
     },
     optimization: {
