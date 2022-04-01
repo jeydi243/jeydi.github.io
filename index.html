@@ -15,35 +15,34 @@
 </head>
 
 <body>
-    <!-- <div id="loading" class="loading">
-        <img id="loading-image" src="img/principale.gif" alt="Loading..." />
-    </div> -->
 
     <main data-scroll-container>
         <nav class="nav" data-scroll-sticky data-scroll-section id="nav">
-            <ul class="flex space-x-7 items-center justify-start font-k2d">
-                <li><a class="text-base text-center text-white" href="#home" data-splitting data-scroll>Home</a></li>
-                <li><a class="text-base text-center text-white" href="#about" data-splitting data-scroll>About</a></li>
-                <li><a class="text-base text-center text-white" href="#services" data-splitting data-scroll>Services</a></li>
-                <li><a class="text-base text-center text-white" href="#portfolio" data-splitting data-scroll>Portfolio</a></li>
-                <li><a class="text-base text-center text-white" href="#contact" data-splitting data-scroll>Contact</a></li>
-                <li><a class="text-base text-center text-white" href="#testimonials" data-splitting data-scroll>Testimonials</a></li>
+            <ul class="flex space-x-7 items-center justify-start font-k2d" data-splitting="items">
+                <li><a class="text-base text-center text-white" href="#home" data-scroll>Home</a></li>
+                <li><a class="text-base text-center text-white" href="#about" data-scroll>About</a></li>
+                <li><a class="text-base text-center text-white" href="#services" data-scroll>Services</a></li>
+                <li><a class="text-base text-center text-white" href="#portfolio" data-scroll>Portfolio</a></li>
+                <li><a class="text-base text-center text-white" href="#contact" data-scroll>Contact</a></li>
+                <li><a class="text-base text-center text-white" href="#testimonials" data-scroll>Testimonials</a></li>
             </ul>
             <!-- <p class="text-xl text-right text-gray-900">+621 2345 6789</p> -->
         </nav>
         <section class="section1 z-0 relative top-0 left-0 bg-center bg-cover" id="home" data-scroll-section>
-            <div class="flex flex-row">
+            <div class="container h-full w-full absolute z-0" data-scroll data-scroll-section>
+                <div class="absolute top-8 left-1 w-full h-full z-0" data-scroll>
+                    <div class="box-animate-blue" data-scroll></div>
+                    <div class="box-animate-red" data-scroll></div>
+                    <div class="box-animate-yellow" data-scroll></div>
+                    <div class="box-animate-teal" data-scroll></div>
+                    <div class="rounded-full bg-blue-600 absolute top-8 bottom-6 h-52 w-52 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-6000" data-scroll></div>
+                </div>
+            </div>
+            <div class="flex flex-row z-1">
                 <div class="flex flex-col w-2/3 h-full">
-                    <div class="absolute top-4 left-1 z-0" data-scroll>
-                        <div class="box-animate-blue" data-scroll></div>
-                        <div class="box-animate-red" data-scroll></div>
-                        <div class="box-animate-yellow" data-scroll></div>
-                        <div class="box-animate-teal" data-scroll></div>
-                        <div class="rounded-full bg-blue-600 absolute top-8 bottom-6 h-52 w-52 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-6000" data-scroll></div>
-                    </div>
                     <img class="ml-20 object-fill w-48 inline-block relative top-12" src="./public/img/avatar1.png" alt="Avatar epa" data-scroll data-scroll-repeat="true" data-scroll-speed="2" data-scroll-id="avatarId" />
                     <div class="ml-20 text-left text-black mt-5 pt-5 inline" data-scroll data-scroll-repeat="true" data-scroll-speed="2" data-scroll-id="textInHome">
-                        <p class="text-white text-left font-k2d text-4xl leading-loose italic" data-splitting>
+                        <p class="text-white text-left font-k2d text-4xl leading-loose italic" data-splitting="word">
                             <span class="text-8xl font-bold font-k2d">Hi, I'm </span>
                             <span class="font-k2d text-8xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 via-red-500 to-teal-300">Epa</span>,</br>
                             <span class="font-k2d text-2xl">A Lubumbashi based </span>
@@ -63,27 +62,43 @@
                     </button>
                 </div>
                 <div class="flex flex-col w-1/3 h-screen justify-center place-items-center" id="target_epa">
-                    <div class="img-wrapper-epa align-self-center">
-                        <img id="epaImage" src="public/img/epa/2.jpg"  class="object object-cover rounded-lg w-3/5 h-2/3" data-scroll>
+                    <div class="img-wrapper-epa flex flex-row align-self-center">
+                        <img id="epaImage" src="public/img/epa/2.jpg" class="object object-cover rounded-lg w-3/5 h-2/3" data-scroll>
                     </div>
                 </div>
             </div>
         </section>
         <section class="section2" id="about" data-scroll-section>
+            <span class="text-9xl font-k2d text-opacity-5 text-blue-500 -left-5 top-3 absolute z-0">About</span>
             <span data-scroll-call="about" data-scroll></span>
             <p class="font-k2d text-blue-500 text-8xl text-center" data-splitting data-scroll data-scroll-repeat="true" data-scroll-delay="2" data-scroll-repeat="true">About</p>
-            <div id="fofo">
-                <form action="">
-                    <img src="https://bit.ly/2tlJLoz"><br>
-                    <input type="text" value="@AmJustSam"><br>
-                    <input type="password"><br>
-                    <input type="submit" value="SIGN IN"><br>
-                    <span><a href="#">Forgot Password?</a></span>
-                </form>
-            </div>
+
         </section>
         <section class="section1" id="portfolio" data-scroll-section>
             <span data-scroll-call="portfolio" data-scroll></span>
+            <div class="contest container h-full w-full">
+                <div class='containerTest'>
+                    <div class='reveal'>
+                        <img src='https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80%20634w'>
+                    </div>
+                </div>
+                <div class='containerTest'>
+                    <div class='reveal'>
+                        <img src='https://images.unsplash.com/photo-1505201372024-aedc618d47c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80%20634w'>
+                    </div>
+                </div>
+                <div class='containerTest'>
+                    <div class='reveal'>
+                        <img src='https://images.unsplash.com/photo-1531727991582-cfd25ce79613?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80%20634w'>
+                    </div>
+                </div>
+                <div class='containerTest'>
+                    <div class='reveal'>
+                        <img src='https://images.unsplash.com/photo-1580215935060-a5adc57c5157?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80'>
+                    </div>
+                    <div class="credit"><a href="https://thisisadvantage.com" target="_blank">Made by Advantage</div>
+                </div>
+            </div>
             <p class="font-k2d text-yellow-300 text-8xl text-center" data-splitting data-scroll data-scroll-repeat="true" data-scroll-delay="2" data-scroll-repeat="true">Portfolio</p>
         </section>
         <section class="section2" id="services" data-scroll-section>
@@ -169,10 +184,6 @@
         </section>
 
         <footer class="relative bottom-0 left-0 h-full bg-own" data-scroll-section>
-            <span data-scroll-call="footer" data-scroll></span>
-            <svg class="cursor" width="30" height="30" viewBox="0 0 30 30">
-                <circle class="cursor__inner" cx="15" cy="15" r="7.5" />
-            </svg>
             <div>Icônes conçues par <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/fr/" title="Flaticon">www.flaticon.com</a></div>
         </footer>
     </main>

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
@@ -20,16 +21,16 @@
     @apply bg-gray-800 w-screen h-screen mx-auto;
 }
 .box-animate-blue {
-    @apply rounded-full bg-purple-500 absolute top-5 right-6 h-20 w-40 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000;
+    @apply rounded-full absolute top-5 right-6 h-20 w-40 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000;
 }
 .box-animate-red {
-    @apply rounded-full bg-red-500 absolute top-2 left-14 h-7 w-7 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000;
+    @apply rounded-full bg-red-500 absolute top-2 left-5 h-7 w-7 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000;
 }
 .box-animate-teal {
-    @apply rounded-full bg-teal-300 absolute top-10 bottom-10 h-10 w-36 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000;
+    @apply rounded-full bg-teal-300 absolute left-10 bottom-10 h-10 w-36 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000;
 }
 .box-animate-yellow {
-    @apply rounded-full bg-yellow-300 absolute top-12 bottom-6 h-20 w-52 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-6000;
+    @apply rounded-full bg-yellow-300 absolute right-5 bottom-6 h-20 w-52 mx-auto mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-6000;
 }
 .nav {
     @apply container mx-auto bg-gray-800 bg-opacity-0 h-14 w-full inline-flex space-x-32 items-center absolute justify-center z-10 top-0 right-0;
@@ -46,14 +47,6 @@
         animation-delay: 6s;
     }
 }
-/* #home {
-    background-image: url('../img/epa/logoepa-v2.png');
-    backdrop-filter: blur(6px);
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
 
 #loading {
     width: 100%;
@@ -95,14 +88,6 @@
     background-clip: text;
     color: transparent;
 }
-.init {
-    opacity: 0;
-}
-
-
-
-
-
 
 /*! locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 html.has-scroll-smooth {

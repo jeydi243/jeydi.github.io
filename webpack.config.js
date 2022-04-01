@@ -138,24 +138,5 @@ module.exports = {
             'window.jQuery': 'jquery',
         }),
         new NodePolyfillPlugin(),
-        // new ImageMinimizerPlugin({
-        //     minimizerOptions: {
-        //         // Lossless optimization with custom option
-        //         // Feel free to experiment with options for better result for you
-        //         plugins: [
-        //             ['gifsicle', { interlaced: true }],
-        //             ['jpegtran', { progressive: true }],
-        //             ['optipng', { optimizationLevel: 5 }],
-        //             [
-        //                 'svgo',
-        //                 {
-        //                     plugins: [{
-        //                         removeViewBox: false,
-        //                     }, ],
-        //                 },
-        //             ],
-        //         ],
-        //     },
-        // }),
     ],
 }

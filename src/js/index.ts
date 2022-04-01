@@ -1,13 +1,14 @@
-import { gsap } from 'gsap'
+import { gsap,Power2 } from 'gsap'
 import { getMousePos as cursor } from './utils'
 import '../css/style.css'
+import '../css/tt.scss'
 import '../css/form.scss'
 import 'splitting/dist/splitting.css'
 import 'splitting/dist/splitting-cells.css'
 import * as Splitting from 'splitting'
 import LocomotiveScroll from 'locomotive-scroll'
 import { ScrollTrigger, MotionPathPlugin } from 'gsap/all'
-Splitting()
+Splitting({ by: 'words' })
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 var mouse = { x: 0, y: 0 }
 const epa = document.getElementById('epaImage')
@@ -49,28 +50,49 @@ function configScroll() {
             : 'fixed',
     })
 }
-window.addEventListener('mousemove', (ev) => (mouse = cursor(ev)))
 window.addEventListener('load', (e) => {
+    window.addEventListener('mousemove', (ev) => (mouse = cursor(ev)))
     configScroll()
-    gsap.to('.inview .char', {
+    gsap.from('.inview .word', {
         duration: 0.5,
-        opacity: 1,
+        opacity: 0,
         delay: 0.5,
         stagger: 0.1,
         y: 10,
         skewX: 6,
         ease: 'back',
     })
-    gsap.to('.inview', {
-        duration: 2,
-        opacity: 1,
-        skewX: 6,
+
+    gsap.from('.img-wrapper-epa', {
+        duration: 5,
+        opacity: 0,
+        height: 0,
+        maskSize: 0,
+        width: 20,
         ease: 'back',
     })
-    gsap.to('.img-wrapper-epa', {
-        duration: 2,
-        skewX: 6,
-        opacity: 1,
-        ease: 'back',
+
+    let revealContainers = document.querySelectorAll('.reveal')
+
+    revealContainers.forEach((container) => {
+        let image = container.querySelector('img')
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container,
+                toggleActions: 'restart none none reset',
+            },
+        })
+
+        tl.set(container, { autoAlpha: 1 })
+        tl.from(container, {
+            xPercent: -100,
+            ease: Power2.easeOut,
+        })
+        tl.from(image, {
+            xPercent: 100,
+            scale: 1.3,
+            delay: -1.5,
+            ease: Power2.easeOut,
+        })
     })
 })

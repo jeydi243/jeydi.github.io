@@ -1,8 +1,8 @@
 // const colors = require('tailwindcss/colors')
 
 module.exports = {
-    purge: [],
-    darkMode: false, // or 'media' or 'class'
+    purge: { content: ['./src/**/*.html'] },
+    darkMode: 'media', // or 'media' or 'class'
     theme: {
         fontFamily: {
             newsreader: ['Newsreader', 'Serif'],
@@ -14,6 +14,7 @@ module.exports = {
             playfair: ["'Playfair Display'", 'serif'],
             k2d: ['K2D', 'sans-serif'],
         },
+        
         extend: {
             animation: {
                 wiggle: 'wiggle 3s linear infinite',
